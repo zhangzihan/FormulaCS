@@ -1,7 +1,7 @@
 grammar Formula;
 
 /* Parser rules */
-main : expr? EOF;
+main : '=' expr EOF;
 expr : sign=('+'|'-') expr                   #Unary
      | expr '%'                              #Percentage
      | expr '^' expr                         #Pow
