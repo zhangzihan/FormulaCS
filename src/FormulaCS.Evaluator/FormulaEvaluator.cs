@@ -16,7 +16,7 @@ namespace FormulaCS.Evaluator
             AddFunctions(DateAndTime.FunctionDelegates);
             AddFunctions(Logical.FunctionDelegates);
             AddFunctions(LookupAndReference.FunctionDelegates);
-            AddFunctions(MathsAndTrigonometry.FunctionDelegates);
+            AddFunctions(MathAndTrigonometry.FunctionDelegates);
             AddFunctions(Statistical.FunctionDelegates);
             AddFunctions(Text.FunctionDelegates);
         }

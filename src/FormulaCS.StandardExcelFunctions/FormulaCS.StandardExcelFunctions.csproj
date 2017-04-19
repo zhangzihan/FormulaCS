@@ -39,13 +39,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddinAndAutomation.cs" />
+    <Compile Include="Compatibility.cs" />
+    <Compile Include="Cube.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="DateAndTime.cs" />
+    <Compile Include="Engineering.cs" />
+    <Compile Include="Financial.cs" />
+    <Compile Include="Information.cs" />
     <Compile Include="Logical.cs" />
     <Compile Include="LookupAndReference.cs" />
-    <Compile Include="MathsAndTrigonometry.cs" />
+    <Compile Include="MathAndTrigonometry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statistical.cs" />
     <Compile Include="Text.cs" />
+    <Compile Include="Web.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FormulaCS.Common\FormulaCS.Common.csproj">

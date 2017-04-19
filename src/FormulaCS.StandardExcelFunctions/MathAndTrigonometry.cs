@@ -4,11 +4,11 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardExcelFunctions
 {
-    public static class MathsAndTrigonometry
+    public static class MathAndTrigonometry
     {
         public static readonly Dictionary<string, FunctionDelegate> FunctionDelegates;
 
-        static MathsAndTrigonometry()
+        static MathAndTrigonometry()
         {
             FunctionDelegates = new Dictionary<string, FunctionDelegate>(StringComparer.OrdinalIgnoreCase)
             {
