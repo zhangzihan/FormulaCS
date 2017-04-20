@@ -75,6 +75,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\FormulaCS.Common\FormulaCS.Common.csproj">
+      <Project>{35F702AA-0047-4554-8FE8-15DDCC155C83}</Project>
+      <Name>FormulaCS.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\FormulaCS.Evaluator\FormulaCS.Evaluator.csproj">
       <Project>{5043c9c4-9116-4c9b-8f97-e1cc7ae65278}</Project>
       <Name>FormulaCS.Evaluator</Name>

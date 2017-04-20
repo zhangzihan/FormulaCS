@@ -50,5 +50,15 @@ namespace FormulaCS.Common
 
             return Convert.ToInt32(obj);
         }
+
+        public static object ErrorValueOnInvalidDouble(double value)
+        {
+            if (double.IsNaN(value) || double.IsInfinity(value))
+            {
+                return ErrorValue.Num;
+            }
+
+            return value;
+        }
     }
 }

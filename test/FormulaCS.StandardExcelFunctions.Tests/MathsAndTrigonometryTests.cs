@@ -1,4 +1,5 @@
 ﻿using System;
+using FormulaCS.Common;
 using FormulaCS.Evaluator;
 using FormulaCS.StandardExcelFunctions.Utils;
 using Xunit;
@@ -60,12 +61,10 @@ namespace FormulaCS.StandardExcelFunctions.Tests
         public void EvaluatesPiFunction()
         {
             // Examples from https://support.office.com/en-us/article/PI-function-264199d0-a3ba-46b8-975a-c4a04608989b
+            // A3=3
             Assert.Equal(3.14159265358979, EvalG15("=PI()"));
             Assert.Equal(1.5707963267949, EvalG15("=PI()/2"));
-
-            // =PI()*(A3^2)
-            // where A3 = 3
-            Assert.Equal(28.2743338823081, EvalG15("=PI()*(3^2)"));
+            Assert.Equal(28.2743338823081, EvalG15("=PI()*(3^2)")); // =PI()*(A3^2)
         }
 
         [Fact]
@@ -108,6 +107,15 @@ namespace FormulaCS.StandardExcelFunctions.Tests
             Assert.Equal(3.141, Eval("=ROUNDDOWN(3.14159,3)"));
             Assert.Equal(-3.1, Eval("=ROUNDDOWN(-3.14159,1)"));
             Assert.Equal(31400d, Eval("=ROUNDDOWN(31415.92654,-2)"));
+        }
+
+        [Fact]
+        public void EvaluatesSqrtFunction()
+        {
+            // Examples from https://support.office.com/en-us/article/SQRT-function-654975c2-05c4-4831-9a24-2c65e4040fdf
+            // A2=-16
+            Assert.Equal(4d, Eval("=SQRT(16)"));
+            Assert.Equal(ErrorValue.Num, Eval("=SQRT(-16)"));
         }
     }
 }
