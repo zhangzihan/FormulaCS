@@ -84,6 +84,29 @@ namespace FormulaCS.StandardExcelFunctions.Tests
         }
 
         [Fact]
+        public void EvaluatesPiFunction()
+        {
+            // Examples from https://support.office.com/en-us/article/PI-function-264199d0-a3ba-46b8-975a-c4a04608989b
+
+            // =PI()
+            output.WriteLine("=PI()\n{0}", DoubleConverter.ToExactString((double)Eval("=PI()")));
+            Assert.Equal(3.141592653589793115997963468544185161590576171875, Eval("=PI()"));
+            Assert.Equal(3.14159265358979, EvalG15("=PI()")); // Excel result
+
+            // =PI()/2
+            output.WriteLine("=PI()/2\n{0}", DoubleConverter.ToExactString((double)Eval("=PI()/2")));
+            Assert.Equal(1.5707963267948965579989817342720925807952880859375, Eval("=PI()/2"));
+            Assert.Equal(1.5707963267949, EvalG15("=PI()/2")); // Excel result
+
+            // A3: 3
+
+            // =PI()*(A3^2)
+            output.WriteLine("=PI()*(3^2)\n{0}", DoubleConverter.ToExactString((double)Eval("=PI()*(3^2)")));
+            Assert.Equal(28.274333882308138043981671216897666454315185546875, Eval("=PI()*(3^2)"));
+            Assert.Equal(28.2743338823081, EvalG15("=PI()*(3^2)")); // Excel result
+        }
+
+        [Fact]
         public void EvaluatesRoundUpFunction()
         {
             // Examples from https://support.office.com/en-gb/article/ROUNDUP-function-f8bc9b23-e795-47db-8703-db171d0c42a7

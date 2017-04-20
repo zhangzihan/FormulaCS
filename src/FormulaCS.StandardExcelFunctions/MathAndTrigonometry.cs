@@ -15,7 +15,7 @@ namespace FormulaCS.StandardExcelFunctions
                 {"LN", LnFunction},
                 {"LOG", LogFunction},
                 {"POWER", PowerFunction},
-//                {"PI", PiFunction},
+                {"PI", PiFunction},
 //                {"ROUND", RoundFunction},
                 {"ROUNDUP", RoundUpFunction},
                 {"ROUNDDOWN", RoundDownFunction},
@@ -191,6 +191,18 @@ namespace FormulaCS.StandardExcelFunctions
             }
 
             args.Result = Math.Pow((double)val1, (double)val2);
+        }
+
+        private static void PiFunction(IFunctionArgs args, IExcelCaller caller)
+        {
+            if (args.Parameters.Length != 0)
+            {
+                throw new ArgumentException(
+                    $"PI function takes no arguments, got {args.Parameters.Length}",
+                    nameof(args));
+            }
+
+            args.Result = Math.PI;
         }
 
         private static void RoundUpFunction(IFunctionArgs args, IExcelCaller caller)
