@@ -2,9 +2,9 @@
 
 namespace FormulaCS.Common
 {
-    public static class StringConversion
+    public static class Conversion
     {
-        public static double ToDouble(object obj)
+        public static object ToDoubleOrErrorValue(object obj)
         {
             if (obj is DateTime)
             {
@@ -13,12 +13,12 @@ namespace FormulaCS.Common
 
             if (obj is char)
             {
-                return 0;
+                return ErrorValue.Value;
             }
 
             if (obj is string)
             {
-                return 0;
+                return ErrorValue.Value;
             }
 
             return Convert.ToDouble(obj);

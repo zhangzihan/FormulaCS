@@ -12,7 +12,7 @@ namespace FormulaCS.StandardExcelFunctions
         {
             FunctionDelegates = new Dictionary<string, FunctionDelegate>(StringComparer.OrdinalIgnoreCase)
             {
-//                {"LN", LnFunction},
+                {"LN", LnFunction},
 //                {"LOG", LogFunction},
 //                {"POWER", PowerFunction},
 //                {"PI", PiFunction},
@@ -25,6 +25,8 @@ namespace FormulaCS.StandardExcelFunctions
 //                {"TAN", TanFunction},
             };
         }
+
+        #region Support methods
 
         /// <remarks>
         /// This function is used by the RoundUp and RoundDown functions in this file.
@@ -54,9 +56,33 @@ namespace FormulaCS.StandardExcelFunctions
             return factor;
         }
 
-        /// <remarks>
-        /// See <a href="https://support.office.com/en-gb/article/ROUNDUP-function-f8bc9b23-e795-47db-8703-db171d0c42a7">this link</a> for more information.
-        /// </remarks>
+        #endregion
+
+        private static void LnFunction(IFunctionArgs args, IExcelCaller caller)
+        {
+            if (args.Parameters.Length != 1)
+            {
+                throw new ArgumentException(
+                    $"LN function takes only 1 argument, got {args.Parameters.Length}");
+            }
+
+            var arg = args.Parameters[0].Evaluate();
+            if (arg is ErrorValue)
+            {
+                args.Result = arg;
+                return;
+            }
+
+            var val = Conversion.ToDoubleOrErrorValue(arg);
+            if (val is ErrorValue)
+            {
+                args.Result = val;
+                return;
+            }
+
+            args.Result = Math.Log((double)val);
+        }
+
         private static void RoundUpFunction(IFunctionArgs args, IExcelCaller caller)
         {
             if (args.Parameters.Length != 2)
@@ -79,11 +105,17 @@ namespace FormulaCS.StandardExcelFunctions
                 return;
             }
 
-            var @double = StringConversion.ToDouble(arg1);
-            var negative = @double < 0;
+            var val = Conversion.ToDoubleOrErrorValue(arg1);
+            if (val is ErrorValue)
+            {
+                args.Result = val;
+                return;
+            }
+
+            var negative = (double)val < 0;
 
             // This code snippet based on example at http://stackoverflow.com/a/13483008
-            var @decimal = new decimal(Math.Abs(@double));
+            var @decimal = new decimal(Math.Abs((double)val));
             var places = Convert.ToInt32(arg2);
             var factor = RoundFactor(places);
             @decimal *= factor;
@@ -93,9 +125,6 @@ namespace FormulaCS.StandardExcelFunctions
             args.Result = Convert.ToDouble(negative ? -@decimal : @decimal);
         }
 
-        /// <remarks>
-        /// See <a href="https://support.office.com/en-gb/article/ROUNDDOWN-function-2ec94c73-241f-4b01-8c6f-17e6d7968f53">this link</a> for more information.
-        /// </remarks>
         private static void RoundDownFunction(IFunctionArgs args, IExcelCaller caller)
         {
             if (args.Parameters.Length != 2)
@@ -118,11 +147,17 @@ namespace FormulaCS.StandardExcelFunctions
                 return;
             }
 
-            var @double = StringConversion.ToDouble(arg1);
-            var negative = @double < 0;
+            var val = Conversion.ToDoubleOrErrorValue(arg1);
+            if (val is ErrorValue)
+            {
+                args.Result = val;
+                return;
+            }
+
+            var negative = (double)val < 0;
 
             // This code snippet based on example at http://stackoverflow.com/a/13483008
-            var @decimal = new decimal(Math.Abs(@double));
+            var @decimal = new decimal(Math.Abs((double)val));
             var places = Convert.ToInt32(arg2);
             var factor = RoundFactor(places);
             @decimal *= factor;
