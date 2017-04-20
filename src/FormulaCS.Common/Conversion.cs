@@ -21,7 +21,34 @@ namespace FormulaCS.Common
                 return ErrorValue.Value;
             }
 
-            return Convert.ToDouble(obj);
+            var n = Convert.ToDouble(obj);
+
+            if (double.IsNaN(n) || double.IsInfinity(n))
+            {
+                return ErrorValue.Value;
+            }
+
+            return n;
+        }
+
+        public static object ToInt32OrErrorValue(object obj)
+        {
+            if (obj is DateTime)
+            {
+                throw new NotImplementedException();
+            }
+
+            if (obj is char)
+            {
+                return ErrorValue.Value;
+            }
+
+            if (obj is string)
+            {
+                return ErrorValue.Value;
+            }
+
+            return Convert.ToInt32(obj);
         }
     }
 }

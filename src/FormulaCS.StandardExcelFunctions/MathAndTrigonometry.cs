@@ -17,7 +17,7 @@ namespace FormulaCS.StandardExcelFunctions
                 {"POWER", PowerFunction},
                 {"PI", PiFunction},
                 {"RADIANS", RadiansFunction},
-//                {"ROUND", RoundFunction},
+                {"ROUND", RoundFunction},
                 {"ROUNDUP", RoundUpFunction},
                 {"ROUNDDOWN", RoundDownFunction},
 //                {"SQRT", SqrtFunction},
@@ -229,6 +229,58 @@ namespace FormulaCS.StandardExcelFunctions
 
             var angle = (double)val;
             args.Result = Math.PI / 180 * angle;
+        }
+
+        private static void RoundFunction(IFunctionArgs args, IExcelCaller caller)
+        {
+            if (args.Parameters.Length != 2)
+            {
+                throw new ArgumentException(
+                    $"ROUND function takes 2 arguments, got {args.Parameters.Length}",
+                    nameof(args));
+            }
+
+            var arg1 = args.Parameters[0].Evaluate();
+            if (arg1 is ErrorValue)
+            {
+                args.Result = arg1;
+                return;
+            }
+
+            var arg2 = args.Parameters[1].Evaluate();
+            if (arg2 is ErrorValue)
+            {
+                args.Result = arg2;
+                return;
+            }
+
+            var val1 = Conversion.ToDoubleOrErrorValue(arg1);
+            if (val1 is ErrorValue)
+            {
+                args.Result = val1;
+                return;
+            }
+
+            var val2 = Conversion.ToInt32OrErrorValue(arg2);
+            if (val2 is ErrorValue)
+            {
+                args.Result = val2;
+                return;
+            }
+
+            // Based on MathX.round(double n, int p) from NPOI
+
+            var n = (double)val1;
+            var p = (int)val2;
+
+            if (p != 0)
+            {
+                var temp = Math.Pow(10, p);
+                args.Result = Math.Round(n * temp) / temp;
+                return;
+            }
+
+            args.Result = Math.Round(n);
         }
 
         private static void RoundUpFunction(IFunctionArgs args, IExcelCaller caller)
