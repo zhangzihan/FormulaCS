@@ -2,7 +2,7 @@
 
 namespace FormulaCS.Common
 {
-    public class ErrorValue
+    public class ErrorValue : IComparable, IComparable<ErrorValue>
     {
         private enum ErrorType
         {
@@ -87,6 +87,18 @@ namespace FormulaCS.Common
                 case ErrorType.NA: return HashNA;
                 default: throw new Exception("Unexpected condition");
             }
+        }
+
+        public int CompareTo(ErrorValue other)
+        {
+            if (other == null) return -1;
+            return errorType.CompareTo(other.errorType);
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj.GetType() != GetType()) return -1;
+            return CompareTo(obj as ErrorValue);
         }
     }
 }
