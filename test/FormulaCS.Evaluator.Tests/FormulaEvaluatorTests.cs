@@ -153,5 +153,11 @@ namespace FormulaCS.Evaluator.Tests
             Assert.Equal(false, Eval("=false"));
             Assert.Equal(false, Eval("=False"));
         }
+
+        [Fact]
+        public void EvaluatesError()
+        {
+            Assert.Equal(ErrorValue.Num, Eval("=#NUM!"));
+        }
     }
 }

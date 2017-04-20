@@ -70,7 +70,7 @@ namespace FormulaCS.Evaluator
 
         public override object VisitError(FormulaParser.ErrorContext context)
         {
-            throw new NotImplementedException();
+            return new ErrorValue(context.GetText());
         }
 
         public override object VisitString(FormulaParser.StringContext context)
