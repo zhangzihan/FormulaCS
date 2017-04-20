@@ -1,4 +1,5 @@
-﻿using FormulaCS.Evaluator;
+﻿using System;
+using FormulaCS.Evaluator;
 using Xunit;
 
 namespace FormulaCS.StandardExcelFunctions.Tests
@@ -15,6 +16,22 @@ namespace FormulaCS.StandardExcelFunctions.Tests
         private object Eval(string formula)
         {
             return evaluator.Evaluate(formula);
+        }
+
+        [Fact]
+        public void EvaluatesLnFunction()
+        {
+            // Examples from https://support.office.com/en-us/article/LN-function-81fe1ed7-dac9-4acd-ba1d-07a142c6118f
+
+            // =LN(86)
+            Assert.Equal(4.45434729625351, Math.Round((double)Eval("=LN(86)"), 14));
+
+            // =LN(2.7182818)
+            Assert.Equal(0.999999989530502, Math.Round((double)Eval("=LN(2.7182818)"), 15));
+
+            // =LN(EXP(3))
+            // TODO: Implement EXP function then enable this test.
+            // TODO: Assert.Equal(3, Eval("=LN(EXP(3))"));
         }
 
         [Fact]
