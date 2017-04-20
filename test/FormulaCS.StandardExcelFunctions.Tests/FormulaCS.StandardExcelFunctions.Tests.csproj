@@ -68,6 +68,7 @@
     <Compile Include="StatisticalTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextTests.cs" />
+    <Compile Include="Utils\DoubleConverter.cs" />
     <Compile Include="WebTests.cs" />
   </ItemGroup>
   <ItemGroup>

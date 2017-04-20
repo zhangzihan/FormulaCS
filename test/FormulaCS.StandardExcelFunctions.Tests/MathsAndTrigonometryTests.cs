@@ -1,15 +1,19 @@
 ﻿using System;
 using FormulaCS.Evaluator;
+using FormulaCS.StandardExcelFunctions.Utils;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace FormulaCS.StandardExcelFunctions.Tests
 {
     public class MathsAndTrigonometryTests
     {
+        private readonly ITestOutputHelper output;
         private readonly FormulaEvaluator evaluator = new FormulaEvaluator();
 
-        public MathsAndTrigonometryTests()
+        public MathsAndTrigonometryTests(ITestOutputHelper output)
         {
+            this.output = output;
             evaluator.AddStandardFunctions();
         }
 
@@ -24,16 +28,35 @@ namespace FormulaCS.StandardExcelFunctions.Tests
             // Examples from https://support.office.com/en-us/article/LN-function-81fe1ed7-dac9-4acd-ba1d-07a142c6118f
 
             // =LN(86)
-            Assert.Equal(4.454347296, Math.Round((double)Eval("=LN(86)"), 9));
-            Assert.Equal(4.45434729625351, Math.Round((double)Eval("=LN(86)"), 14));
+            output.WriteLine("=LN(86)\n{0}", DoubleConverter.ToExactString((double)Eval("=LN(86)")));
+            Assert.Equal(4.4543472962535073378376182517968118190765380859375, Eval("=LN(86)"));
+            Assert.Equal(4.45434729625351, Math.Round((double)Eval("=LN(86)"), 14)); // Excel result
 
             // =LN(2.7182818)
-            Assert.Equal(0.99999999, Math.Round((double)Eval("=LN(2.7182818)"), 9));
-            Assert.Equal(0.999999989530502, Math.Round((double)Eval("=LN(2.7182818)"), 15));
+            output.WriteLine("=LN(2.7182818)\n{0}", DoubleConverter.ToExactString((double)Eval("=LN(2.7182818)")));
+            Assert.Equal(0.99999998953050239780537822298356331884860992431640625, Eval("=LN(2.7182818)"));
+            Assert.Equal(0.999999989530502, Math.Round((double)Eval("=LN(2.7182818)"), 15)); // Excel result
 
             // =LN(EXP(3))
             // TODO: Implement EXP function then enable this test.
             // TODO: Assert.Equal(3, Eval("=LN(EXP(3))"));
+        }
+
+        [Fact]
+        public void EvaluatesLogFunction()
+        {
+            // Examples from https://support.office.com/en-us/article/LOG-function-4e82f196-1ca9-4747-8fb0-6c4a3abb3280
+
+            // =LOG(10)
+            Assert.Equal(1.0, Eval("=LOG(10)"));
+
+            // =LOG(8, 2)
+            Assert.Equal(3.0, Eval("=LOG(8, 2)"));
+
+            // =LOG(86, 2.7182818)
+            output.WriteLine("=LOG(86, 2.7182818)\n{0}", DoubleConverter.ToExactString((double)Eval("=LOG(86, 2.7182818)")));
+            Assert.Equal(4.45434734288828604320542581262998282909393310546875, Eval("=LOG(86, 2.7182818)"));
+            Assert.Equal(4.45434734288829, Math.Round((double)Eval("=LOG(86, 2.7182818)"), 14)); // Excel result
         }
 
         [Fact]
