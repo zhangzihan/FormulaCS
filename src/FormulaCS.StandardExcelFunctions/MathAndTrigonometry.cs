@@ -16,10 +16,10 @@ namespace FormulaCS.StandardExcelFunctions
                 {"LOG", LogFunction},
                 {"POWER", PowerFunction},
                 {"PI", PiFunction},
+                {"RADIANS", RadiansFunction},
 //                {"ROUND", RoundFunction},
                 {"ROUNDUP", RoundUpFunction},
                 {"ROUNDDOWN", RoundDownFunction},
-//                {"RADIANS", RadiansFunction},
 //                {"SQRT", SqrtFunction},
 //                {"SUM", SumFunction},
 //                {"TAN", TanFunction},
@@ -203,6 +203,32 @@ namespace FormulaCS.StandardExcelFunctions
             }
 
             args.Result = Math.PI;
+        }
+
+        private static void RadiansFunction(IFunctionArgs args, IExcelCaller caller)
+        {
+            if (args.Parameters.Length != 1)
+            {
+                throw new ArgumentException(
+                    $"RADIANS function takes only 1 argument, got {args.Parameters.Length}");
+            }
+
+            var arg = args.Parameters[0].Evaluate();
+            if (arg is ErrorValue)
+            {
+                args.Result = arg;
+                return;
+            }
+
+            var val = Conversion.ToDoubleOrErrorValue(arg);
+            if (val is ErrorValue)
+            {
+                args.Result = val;
+                return;
+            }
+
+            var angle = (double)val;
+            args.Result = Math.PI / 180 * angle;
         }
 
         private static void RoundUpFunction(IFunctionArgs args, IExcelCaller caller)

@@ -107,6 +107,15 @@ namespace FormulaCS.StandardExcelFunctions.Tests
         }
 
         [Fact]
+        public void EvaluatesRadiansFunction()
+        {
+            // Example from https://support.office.com/en-us/article/RADIANS-function-ac409508-3d48-45f5-ac02-1497c92de5bf
+
+            // =RADIANS(270)
+            Assert.Equal(4.71238898038469, EvalG15("=RADIANS(270)"));
+        }
+
+        [Fact]
         public void EvaluatesRoundUpFunction()
         {
             // Examples from https://support.office.com/en-gb/article/ROUNDUP-function-f8bc9b23-e795-47db-8703-db171d0c42a7
