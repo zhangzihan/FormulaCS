@@ -42,8 +42,8 @@ namespace FormulaCS.StandardExcelFunctions.Tests
         public void EvaluatesLogFunction()
         {
             // Examples from https://support.office.com/en-us/article/LOG-function-4e82f196-1ca9-4747-8fb0-6c4a3abb3280
-            Assert.Equal(1.0, Eval("=LOG(10)"));
-            Assert.Equal(3.0, Eval("=LOG(8, 2)"));
+            Assert.Equal(1d, Eval("=LOG(10)"));
+            Assert.Equal(3d, Eval("=LOG(8, 2)"));
             Assert.Equal(4.45434734288829, EvalG15("=LOG(86, 2.7182818)"));
         }
 
@@ -51,7 +51,7 @@ namespace FormulaCS.StandardExcelFunctions.Tests
         public void EvaluatesPowerFunction()
         {
             // Examples from https://support.office.com/en-us/article/POWER-function-d3f2908b-56f4-4c3f-895a-07fb519c362a
-            Assert.Equal(25.0, Eval("=POWER(5,2)"));
+            Assert.Equal(25d, Eval("=POWER(5,2)"));
             Assert.Equal(2401077.22206958, EvalG15("=POWER(98.6,3.2)"));
             Assert.Equal(5.65685424949238, EvalG15("=POWER(4,5/4)"));
         }
@@ -82,32 +82,32 @@ namespace FormulaCS.StandardExcelFunctions.Tests
             Assert.Equal(2.2, Eval("=ROUND(2.15, 1)"));
             Assert.Equal(2.1, Eval("=ROUND(2.149, 1)"));
             Assert.Equal(-1.48, Eval("=ROUND(-1.475, 2)"));
-            Assert.Equal(20.0, Eval("=ROUND(21.5, -1)"));
-            Assert.Equal(1000.0, Eval("=ROUND(626.3,-3)"));
-            Assert.Equal(0.0, Eval("=ROUND(1.98,-1)"));
-            Assert.Equal(-100.0, Eval("=ROUND(-50.55,-2)"));
+            Assert.Equal(20d, Eval("=ROUND(21.5, -1)"));
+            Assert.Equal(1000d, Eval("=ROUND(626.3,-3)"));
+            Assert.Equal(0d, Eval("=ROUND(1.98,-1)"));
+            Assert.Equal(-100d, Eval("=ROUND(-50.55,-2)"));
         }
 
         [Fact]
         public void EvaluatesRoundUpFunction()
         {
             // Examples from https://support.office.com/en-gb/article/ROUNDUP-function-f8bc9b23-e795-47db-8703-db171d0c42a7
-            Assert.Equal(4.0, Eval("=ROUNDUP(3.2,0)"));
-            Assert.Equal(77.0, Eval("=ROUNDUP(76.9,0)"));
+            Assert.Equal(4d, Eval("=ROUNDUP(3.2,0)"));
+            Assert.Equal(77d, Eval("=ROUNDUP(76.9,0)"));
             Assert.Equal(3.142, Eval("=ROUNDUP(3.14159,3)"));
             Assert.Equal(-3.2, Eval("=ROUNDUP(-3.14159,1)"));
-            Assert.Equal(31500.0, Eval("=ROUNDUP(31415.92654,-2)"));
+            Assert.Equal(31500d, Eval("=ROUNDUP(31415.92654,-2)"));
         }
 
         [Fact]
         public void EvaluatesRoundDownFunction()
         {
             // Examples from https://support.office.com/en-gb/article/ROUNDDOWN-function-2ec94c73-241f-4b01-8c6f-17e6d7968f53
-            Assert.Equal(3.0, Eval("=ROUNDDOWN(3.2,0)"));
-            Assert.Equal(76.0, Eval("=ROUNDDOWN(76.9,0)"));
+            Assert.Equal(3d, Eval("=ROUNDDOWN(3.2,0)"));
+            Assert.Equal(76d, Eval("=ROUNDDOWN(76.9,0)"));
             Assert.Equal(3.141, Eval("=ROUNDDOWN(3.14159,3)"));
             Assert.Equal(-3.1, Eval("=ROUNDDOWN(-3.14159,1)"));
-            Assert.Equal(31400.0, Eval("=ROUNDDOWN(31415.92654,-2)"));
+            Assert.Equal(31400d, Eval("=ROUNDDOWN(31415.92654,-2)"));
         }
     }
 }

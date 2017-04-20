@@ -29,7 +29,7 @@ namespace FormulaCS.StandardExcelFunctions.Tests
             Assert.Equal(true, Eval("=AND(50>1,50<100)"));
 
             // =IF(AND(A2<A3,A2<100),A2,"The value is out of range")
-            Assert.Equal(50.0, Eval("=IF(AND(50<100,50<100),50,\"The value is out of range\")"));
+            Assert.Equal(50d, Eval("=IF(AND(50<100,50<100),50,\"The value is out of range\")"));
 
             // =IF(AND(A3>1,A3<100),A3,"The value is out of range")
             Assert.Equal("The value is out of range", Eval("=IF(AND(100>1,100<100),100,\"The value is out of range\")"));
@@ -43,7 +43,7 @@ namespace FormulaCS.StandardExcelFunctions.Tests
             // C2="Yes"
 
             // =IF(C2="Yes",1,2)
-            Assert.Equal(1.0, Eval("=IF(\"Yes\"=\"Yes\",1,2)"));
+            Assert.Equal(1d, Eval("=IF(\"Yes\"=\"Yes\",1,2)"));
 
             // B2=$800.00
             // C2=$921.58
@@ -75,14 +75,14 @@ namespace FormulaCS.StandardExcelFunctions.Tests
             // B4=23
 
             // =IFERROR(A2/B2, "Error in calculation")
-            Assert.Equal(6.0, Eval("=IFERROR(210/35, \"Error in calculation\")"));
+            Assert.Equal(6d, Eval("=IFERROR(210/35, \"Error in calculation\")"));
 
             // =IFERROR(A3/B3, "Error in calculation")
             Assert.Equal("Error in calculation", Eval("=IFERROR(55/0, \"Error in calculation\")"));
 
             // =IFERROR(A4/B4, "Error in calculation")
             // NOTE: Treating blank value as zero here. Grammar doesn't support missing values.
-            Assert.Equal(0.0, Eval("=IFERROR(0/23, \"Error in calculation\")"));
+            Assert.Equal(0d, Eval("=IFERROR(0/23, \"Error in calculation\")"));
         }
 
         [Fact]
@@ -102,7 +102,7 @@ namespace FormulaCS.StandardExcelFunctions.Tests
             Assert.Equal(true, Eval("=OR(50>1,50<100)"));
 
             // =IF(OR(A2>1,A2<100),A3,"The value is out of range")
-            Assert.Equal(100.0, Eval("=IF(OR(50>1,50<100),100,\"The value is out of range\")"));
+            Assert.Equal(100d, Eval("=IF(OR(50>1,50<100),100,\"The value is out of range\")"));
 
             // =IF(OR(A2<0,A2>50),A2,"The value is out of range")
             Assert.Equal("The value is out of range", Eval("=IF(OR(50<0,50>50),50,\"The value is out of range\")"));
