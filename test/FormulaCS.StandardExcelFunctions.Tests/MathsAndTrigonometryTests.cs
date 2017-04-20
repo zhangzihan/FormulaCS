@@ -24,9 +24,11 @@ namespace FormulaCS.StandardExcelFunctions.Tests
             // Examples from https://support.office.com/en-us/article/LN-function-81fe1ed7-dac9-4acd-ba1d-07a142c6118f
 
             // =LN(86)
+            Assert.Equal(4.454347296, Math.Round((double)Eval("=LN(86)"), 9));
             Assert.Equal(4.45434729625351, Math.Round((double)Eval("=LN(86)"), 14));
 
             // =LN(2.7182818)
+            Assert.Equal(0.99999999, Math.Round((double)Eval("=LN(2.7182818)"), 9));
             Assert.Equal(0.999999989530502, Math.Round((double)Eval("=LN(2.7182818)"), 15));
 
             // =LN(EXP(3))
