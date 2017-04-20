@@ -67,6 +67,13 @@ public interface IFormulaVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitRelational([NotNull] FormulaParser.RelationalContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>Error</c>
+	/// labeled alternative in <see cref="FormulaParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitError([NotNull] FormulaParser.ErrorContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>String</c>
 	/// labeled alternative in <see cref="FormulaParser.expr"/>.
 	/// </summary>
@@ -74,12 +81,33 @@ public interface IFormulaVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitString([NotNull] FormulaParser.StringContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>Range</c>
+	/// labeled alternative in <see cref="FormulaParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitRange([NotNull] FormulaParser.RangeContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>Unary</c>
 	/// labeled alternative in <see cref="FormulaParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitUnary([NotNull] FormulaParser.UnaryContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>CellRef</c>
+	/// labeled alternative in <see cref="FormulaParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCellRef([NotNull] FormulaParser.CellRefContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>Name</c>
+	/// labeled alternative in <see cref="FormulaParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitName([NotNull] FormulaParser.NameContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>Function</c>
 	/// labeled alternative in <see cref="FormulaParser.expr"/>.

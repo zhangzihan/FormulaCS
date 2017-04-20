@@ -68,16 +68,36 @@ namespace FormulaCS.Evaluator
             }
         }
 
+        public override object VisitError(FormulaParser.ErrorContext context)
+        {
+            throw new NotImplementedException();
+        }
+
         public override object VisitString(FormulaParser.StringContext context)
         {
             var str = context.GetText();
             return str.Substring(1, str.Length - 2);
         }
 
+        public override object VisitRange(FormulaParser.RangeContext context)
+        {
+            throw new NotImplementedException();
+        }
+
         public override object VisitUnary(FormulaParser.UnaryContext context)
         {
             var n1 = Convert.ToDouble(context.expr().Accept(this));
             return context.sign.Text == "-" ? -n1 : n1;
+        }
+
+        public override object VisitCellRef(FormulaParser.CellRefContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object VisitName(FormulaParser.NameContext context)
+        {
+            throw new NotImplementedException();
         }
 
         public override object VisitFunction(FormulaParser.FunctionContext context)
