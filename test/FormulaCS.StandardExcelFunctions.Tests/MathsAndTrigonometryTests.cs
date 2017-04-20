@@ -22,6 +22,11 @@ namespace FormulaCS.StandardExcelFunctions.Tests
             return evaluator.Evaluate(formula);
         }
 
+        private double EvalG15(string formula)
+        {
+            return Convert.ToDouble(((double)Eval(formula)).ToString("G15"));
+        }
+
         [Fact]
         public void EvaluatesLnFunction()
         {
@@ -30,12 +35,12 @@ namespace FormulaCS.StandardExcelFunctions.Tests
             // =LN(86)
             output.WriteLine("=LN(86)\n{0}", DoubleConverter.ToExactString((double)Eval("=LN(86)")));
             Assert.Equal(4.4543472962535073378376182517968118190765380859375, Eval("=LN(86)"));
-            Assert.Equal(4.45434729625351, Math.Round((double)Eval("=LN(86)"), 14)); // Excel result
+            Assert.Equal(4.45434729625351, EvalG15("=LN(86)")); // Excel result
 
             // =LN(2.7182818)
             output.WriteLine("=LN(2.7182818)\n{0}", DoubleConverter.ToExactString((double)Eval("=LN(2.7182818)")));
             Assert.Equal(0.99999998953050239780537822298356331884860992431640625, Eval("=LN(2.7182818)"));
-            Assert.Equal(0.999999989530502, Math.Round((double)Eval("=LN(2.7182818)"), 15)); // Excel result
+            Assert.Equal(0.999999989530502, EvalG15("=LN(2.7182818)")); // Excel result
 
             // =LN(EXP(3))
             // TODO: Implement EXP function then enable this test.
@@ -56,7 +61,26 @@ namespace FormulaCS.StandardExcelFunctions.Tests
             // =LOG(86, 2.7182818)
             output.WriteLine("=LOG(86, 2.7182818)\n{0}", DoubleConverter.ToExactString((double)Eval("=LOG(86, 2.7182818)")));
             Assert.Equal(4.45434734288828604320542581262998282909393310546875, Eval("=LOG(86, 2.7182818)"));
-            Assert.Equal(4.45434734288829, Math.Round((double)Eval("=LOG(86, 2.7182818)"), 14)); // Excel result
+            Assert.Equal(4.45434734288829, EvalG15("=LOG(86, 2.7182818)")); // Excel result
+        }
+
+        [Fact]
+        public void EvaluatesPowerFunction()
+        {
+            // Examples from https://support.office.com/en-us/article/POWER-function-d3f2908b-56f4-4c3f-895a-07fb519c362a
+
+            // =POWER(5,2)
+            Assert.Equal(25.0, Eval("=POWER(5,2)"));
+
+            // =POWER(98.6,3.2)
+            output.WriteLine("=POWER(98.6,3.2)\n{0}", DoubleConverter.ToExactString((double)Eval("=POWER(98.6,3.2)")));
+            Assert.Equal(2401077.222069577313959598541259765625, Eval("=POWER(98.6,3.2)"));
+            Assert.Equal(2401077.22206958, EvalG15("=POWER(98.6,3.2)")); // Excel result
+
+            // =POWER(4,5/4)
+            output.WriteLine("=POWER(4,5/4)\n{0}", DoubleConverter.ToExactString((double)Eval("=POWER(4,5/4)")));
+            Assert.Equal(5.65685424949238058189848743495531380176544189453125, Eval("=POWER(4,5/4)"));
+            Assert.Equal(5.65685424949238, EvalG15("=POWER(4,5/4)")); // Excel result
         }
 
         [Fact]
