@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS", "src\FormulaCS\FormulaCS.csproj", "{17123AB0-C053-4E95-B160-4A96AE8C5F00}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS.Common", "src\FormulaCS.Common\FormulaCS.Common.csproj", "{35F702AA-0047-4554-8FE8-15DDCC155C83}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS.StandardExcelFunctions", "src\FormulaCS.StandardExcelFunctions\FormulaCS.StandardExcelFunctions.csproj", "{219B69EB-2703-4695-ABA7-53F30CE0FCA7}"
@@ -29,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{17123AB0-C053-4E95-B160-4A96AE8C5F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17123AB0-C053-4E95-B160-4A96AE8C5F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17123AB0-C053-4E95-B160-4A96AE8C5F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17123AB0-C053-4E95-B160-4A96AE8C5F00}.Release|Any CPU.Build.0 = Release|Any CPU
 		{35F702AA-0047-4554-8FE8-15DDCC155C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{35F702AA-0047-4554-8FE8-15DDCC155C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35F702AA-0047-4554-8FE8-15DDCC155C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,7 +60,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{17123AB0-C053-4E95-B160-4A96AE8C5F00} = {46FFCE82-3C69-4AAA-9BDE-4D0645C06D27}
 		{35F702AA-0047-4554-8FE8-15DDCC155C83} = {46FFCE82-3C69-4AAA-9BDE-4D0645C06D27}
 		{219B69EB-2703-4695-ABA7-53F30CE0FCA7} = {46FFCE82-3C69-4AAA-9BDE-4D0645C06D27}
 		{C3402AD5-6BB3-41F3-A81E-E276B0D12623} = {C0BC5A98-A6F0-4B62-927C-867C778B4913}
