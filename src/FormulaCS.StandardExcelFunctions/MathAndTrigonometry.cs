@@ -214,7 +214,6 @@ namespace FormulaCS.StandardExcelFunctions
                     return;
                 }
 
-
                 var val = Conversion.ToDoubleOrErrorValue(arg);
                 if (val is ErrorValue)
                 {
