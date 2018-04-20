@@ -117,5 +117,15 @@ namespace FormulaCS.StandardExcelFunctions.Tests
             Assert.Equal(4d, Eval("=SQRT(16)"));
             Assert.Equal(ErrorValue.Num, Eval("=SQRT(-16)"));
         }
+
+        [Fact]
+        public void EvaluatesSumFunction()
+        {
+            // Examples from https://support.office.com/en-us/article/SUM-function-043E1C7D-7726-4E80-8F32-07B23E057F89
+            //Assert.Equal(15d, Eval("=SUM(1,2,3,4,5)"));
+            //Assert.Equal(15d, Eval("=SUM(10,5)"));
+            Assert.Equal(1d, Eval("=SUM(1)"));
+            Assert.Throws<ArgumentException>(() => Eval("=SUM()"));
+        }
     }
 }

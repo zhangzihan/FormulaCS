@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using FormulaCS.Common;
 
 namespace FormulaCS.StandardExcelFunctions
@@ -21,8 +22,8 @@ namespace FormulaCS.StandardExcelFunctions
                 {"ROUNDUP", RoundUpFunction},
                 {"ROUNDDOWN", RoundDownFunction},
                 {"SQRT", SqrtFunction},
-//                {"SUM", SumFunction},
-//                {"TAN", TanFunction},
+                {"SUM", SumFunction},
+                //{"TAN", TanFunction},
             };
         }
 
@@ -191,6 +192,40 @@ namespace FormulaCS.StandardExcelFunctions
             }
 
             args.Result = Math.Pow((double)val1, (double)val2);
+        }
+
+        private static void SumFunction(IFunctionArgs args, IExcelCaller caller)
+        {
+            if (args.Parameters.Length < 1)
+            {
+                throw new ArgumentException(
+                    $"SUM function takes at least 1 arguments, got {args.Parameters.Length}",
+                    nameof(args));
+            }
+
+            var numbers = new List<double>();
+
+            foreach (var argsParameter in args.Parameters)
+            {
+                var arg = argsParameter.Evaluate();
+                if (arg is ErrorValue)
+                {
+                    args.Result = arg;
+                    return;
+                }
+
+
+                var val = Conversion.ToDoubleOrErrorValue(arg);
+                if (val is ErrorValue)
+                {
+                    args.Result = val;
+                    return;
+                }
+
+                numbers.Add((double)val);
+            }
+
+            args.Result = numbers.Sum();
         }
 
         private static void PiFunction(IFunctionArgs args, IExcelCaller caller)
