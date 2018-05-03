@@ -11,6 +11,8 @@ namespace FormulaCS.Evaluator
     {
         public readonly Dictionary<string, FunctionDelegate> Functions = new Dictionary<string, FunctionDelegate>(StringComparer.OrdinalIgnoreCase);
 
+        public Dictionary<string,object> Variables { get; set; }
+
         public void AddStandardFunctions()
         {
             AddFunctions(DateAndTime.FunctionDelegates);
@@ -29,17 +31,25 @@ namespace FormulaCS.Evaluator
             }
         }
 
-        public object Evaluate(string formula)
+        public object Evaluate(string formula, Dictionary<string, object> values = null)
         {
+            if (values == null)
+                values = new Dictionary<string, object>();
+
             if (string.IsNullOrEmpty(formula))
             {
                 return 0;
             }
 
+            var parsedFormula = new VariableParser(formula, values);
+            formula = parsedFormula.Parse();
+
             var inputStream = new AntlrInputStream(formula);
             var lexer = new FormulaLexer(inputStream);
             var tokens = new CommonTokenStream(lexer);
             var parser = new FormulaParser(tokens);
+
+            Variables = parsedFormula.Variables;
 
             var errorListener = new FormulaErrorListener();
             parser.RemoveErrorListeners();
