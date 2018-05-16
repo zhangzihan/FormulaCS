@@ -23,7 +23,8 @@ namespace FormulaCS.StandardExcelFunctions
                 {"ROUNDDOWN", RoundDownFunction},
                 {"SQRT", SqrtFunction},
                 {"SUM", SumFunction},
-                //{"TAN", TanFunction},
+                {"RANGE", RangeFunction},
+                {"STDEV", StdevFunction},
             };
         }
 
@@ -227,6 +228,85 @@ namespace FormulaCS.StandardExcelFunctions
             args.Result = numbers.Sum();
         }
 
+        private static void StdevFunction(IFunctionArgs args, IExcelCaller caller)
+        {
+            if (args.Parameters.Length < 1)
+            {
+                throw new ArgumentException(
+                    $"STDEV function takes at least 1 arguments, got {args.Parameters.Length}",
+                    nameof(args));
+            }
+
+            var numbers = new List<double>();
+
+            foreach (var argsParameter in args.Parameters)
+            {
+                var arg = argsParameter.Evaluate();
+                if (arg is ErrorValue)
+                {
+                    args.Result = arg;
+                    return;
+                }
+
+                var val = Conversion.ToDoubleOrErrorValue(arg);
+                if (val is ErrorValue)
+                {
+                    args.Result = val;
+                    return;
+                }
+
+                numbers.Add((double)val);
+            }
+            var mean = numbers.Average();
+            var sum = 0.0;
+            foreach (var number in numbers)
+            {
+                sum += Math.Pow(number - mean, 2);
+            }
+
+            args.Result = Math.Sqrt(sum / (numbers.Count - 1));
+        }
+
+        private static void RangeFunction(IFunctionArgs args, IExcelCaller caller)
+        {
+            if (args.Parameters.Length != 2)
+            {
+                throw new ArgumentException(
+                    $"RANGE function takes 2 arguments, got {args.Parameters.Length}",
+                    nameof(args));
+            }
+
+            var arg1 = args.Parameters[0].Evaluate();
+            if (arg1 is ErrorValue)
+            {
+                args.Result = arg1;
+                return;
+            }
+
+            var arg2 = args.Parameters[1].Evaluate();
+            if (arg2 is ErrorValue)
+            {
+                args.Result = arg2;
+                return;
+            }
+
+            var val1 = Conversion.ToDoubleOrErrorValue(arg1);
+            if (val1 is ErrorValue)
+            {
+                args.Result = val1;
+                return;
+            }
+
+            var val2 = Conversion.ToDoubleOrErrorValue(arg2);
+            if (val2 is ErrorValue)
+            {
+                args.Result = val2;
+                return;
+            }
+
+            args.Result = (double)val2 - (double)val1;
+        }
+
         private static void PiFunction(IFunctionArgs args, IExcelCaller caller)
         {
             if (args.Parameters.Length != 0)
@@ -267,10 +347,10 @@ namespace FormulaCS.StandardExcelFunctions
 
         private static void RoundFunction(IFunctionArgs args, IExcelCaller caller)
         {
-            if (args.Parameters.Length != 2)
+            if (args.Parameters.Length < 1)
             {
                 throw new ArgumentException(
-                    $"ROUND function takes 2 arguments, got {args.Parameters.Length}",
+                    $"ROUND function takes at least 1 arguments, got {args.Parameters.Length}",
                     nameof(args));
             }
 
@@ -280,12 +360,20 @@ namespace FormulaCS.StandardExcelFunctions
                 args.Result = arg1;
                 return;
             }
+            var arg2 = new object();
 
-            var arg2 = args.Parameters[1].Evaluate();
-            if (arg2 is ErrorValue)
+            if (args.Parameters.Length == 2)
             {
-                args.Result = arg2;
-                return;
+                arg2 = args.Parameters[1].Evaluate();
+                if (arg2 is ErrorValue)
+                {
+                    args.Result = arg2;
+                    return;
+                }
+            }
+            else
+            {
+                arg2 = 1;
             }
 
             var val1 = Conversion.ToDoubleOrErrorValue(arg1);

@@ -48,5 +48,14 @@ namespace FormulaCS.Common.Tests
 
             Assert.Equal(variableParser.Variables[variableName], expectedVariableValue);
         }
+
+        [Fact]
+        public void should_return_correct_value_for_range_variable()
+        {
+            var formula = "=SUM([ID5:ID6])";
+            var variableParser = new VariableParser(formula, values);
+
+            variableParser.Parse();
+        }
     }
 }
