@@ -62,7 +62,8 @@ namespace FormulaCS.Evaluator.Tests
         [InlineData("=(4*2 + 3*5 + 2*1)/(2 + 5 + 1)", "3.125")]
         public void ShouldPassStandardFormula(string formula, string expected)
         {
-            Assert.Equal(Convert.ToDouble(expected), _calculationEngine.Evaluate(formula, _values));
+            _calculationEngine.Variables = _values;
+            Assert.Equal(Convert.ToDouble(expected), _calculationEngine.Evaluate(formula));
         }
 
         [Theory]
@@ -76,7 +77,8 @@ namespace FormulaCS.Evaluator.Tests
         [InlineData("=MAX([ID5], [ID6], [ID7])", "8")]
         public void ShouldTakeValuesFromColumnPositions(string formula, string expected)
         {
-            Assert.Equal(Convert.ToDouble(expected), _calculationEngine.Evaluate(formula, _values));
+            _calculationEngine.Variables = _values;
+            Assert.Equal(Convert.ToDouble(expected), _calculationEngine.Evaluate(formula));
         }
 
         [Theory]
@@ -93,7 +95,8 @@ namespace FormulaCS.Evaluator.Tests
         [InlineData("=MAX([ID6:ID7],[ID5])", "8")]
         public void ShouldTakeValuesFromARangeOfAllocations(string formula, string expected)
         {
-            Assert.Equal(Math.Round(Convert.ToDouble(expected), 4), Math.Round((double)_calculationEngine.Evaluate(formula, _values), 4));
+            _calculationEngine.Variables = _values;
+            Assert.Equal(Math.Round(Convert.ToDouble(expected), 4), Math.Round((double)_calculationEngine.Evaluate(formula), 4));
         }
 
         [Theory(Skip = "We need to update ExcelRangeExpander")]
@@ -114,7 +117,8 @@ namespace FormulaCS.Evaluator.Tests
         [InlineData("=MAX([ID7:],[ID6])", "8")]
         public void ShouldTakeValuesFromAnAllocationFromAStartingPoint(string formula, string expected)
         {
-            Assert.Equal(Convert.ToDouble(expected), _calculationEngine.Evaluate(formula, _values));
+            _calculationEngine.Variables = _values;
+            Assert.Equal(Convert.ToDouble(expected), _calculationEngine.Evaluate(formula));
         }
 
         [Theory]
@@ -122,7 +126,8 @@ namespace FormulaCS.Evaluator.Tests
         [InlineData("=COUNT([ID5],[ID6],[ID6],[ID6],[ID7])", "5")]
         public void ShouldBeAbleToReferenceColumnsMoreThanOnce(string formula, string expected)
         {
-            Assert.Equal(Convert.ToDouble(expected), _calculationEngine.Evaluate(formula, _values));
+            _calculationEngine.Variables = _values;
+            Assert.Equal(Convert.ToDouble(expected), _calculationEngine.Evaluate(formula));
         }
 
         [Theory]
@@ -139,7 +144,8 @@ namespace FormulaCS.Evaluator.Tests
         public void ShouldBeAbleToPerformAllOtherRelevantFunctions(string formula, string expected)
         {
             setup();
-            Assert.Equal(Convert.ToDouble(expected), (double)_calculationEngine.Evaluate(formula, _values));
+            _calculationEngine.Variables = _values;
+            Assert.Equal(Convert.ToDouble(expected), (double)_calculationEngine.Evaluate(formula));
         }
 
         [Theory]
@@ -147,7 +153,8 @@ namespace FormulaCS.Evaluator.Tests
         public void ShouldBeAbleToPerformStdevFunction(string formula, string expected)
         {
             setup();
-            Assert.Equal(Math.Round(Convert.ToDouble(expected), 4), Math.Round((double)_calculationEngine.Evaluate(formula, _values), 4));
+            _calculationEngine.Variables = _values;
+            Assert.Equal(Math.Round(Convert.ToDouble(expected), 4), Math.Round((double)_calculationEngine.Evaluate(formula), 4));
         }
 
         [Theory]
@@ -155,7 +162,8 @@ namespace FormulaCS.Evaluator.Tests
         [InlineData("=IF([ID7]=3, \"correct\", \"incorrect\")", "incorrect")]
         public void ShouldBeAbleToLogicFunctionsWithStringResults(string formula, string expected)
         {
-            Assert.Equal(expected, _calculationEngine.Evaluate(formula, _values));
+            _calculationEngine.Variables = _values;
+            Assert.Equal(expected, _calculationEngine.Evaluate(formula));
         }
 
         [Theory]
@@ -163,7 +171,8 @@ namespace FormulaCS.Evaluator.Tests
         [InlineData("=IF([ID7]=3, true, false)", false)]
         public void ShouldBeAbleToLogicFunctionsWithBooleanResults(string formula, bool expected)
         {
-            Assert.Equal(expected, _calculationEngine.Evaluate(formula, _values));
+            _calculationEngine.Variables = _values;
+            Assert.Equal(expected, _calculationEngine.Evaluate(formula));
         }
     }
 }
