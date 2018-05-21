@@ -3,6 +3,7 @@ using ExcelRangeExpander;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using ExcelRangeExpander.Interfaces;
 
 namespace FormulaCS.Common
 {
@@ -28,13 +29,13 @@ namespace FormulaCS.Common
 
         public string Parse()
         {
-            this.formula = ParseRanges(this.formula);
-            this.formula = ParseVariables(this.formula);
+            ParseRanges();
+            ParseVariables();
 
             return this.formula;
         }
 
-        private string ParseRanges(string formula)
+        private void ParseRanges()
         {
             var matches = Regex.Matches(formula, RangeFinderRegex);
 
@@ -46,11 +47,9 @@ namespace FormulaCS.Common
 
                 formula = formula.Replace(match.Value, string.Join(",", expandedRange));
             }
-
-            return formula;
         }
 
-        private string ParseVariables(string formula)
+        private void ParseVariables()
         {
             var matches = Regex.Matches(formula, VariableFinderRegex);
 
@@ -58,12 +57,20 @@ namespace FormulaCS.Common
             {
                 var variable = match.Value.Replace("[", string.Empty).Replace("]", string.Empty);
 
+                if (!Variables.ContainsKey(variable))
+                {
+                    Variables.Add(variable, null);
+                }
+
+                if (!_values.ContainsKey(variable))
+                {
+                    _values.Add(variable, null);
+                }
+
                 Variables[variable] = _values[variable];
 
                 formula = formula.Replace(match.Value, Variables[variable]?.ToString());
             }
-
-            return formula;
         }
     }
 }

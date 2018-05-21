@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FormulaCS.Common</RootNamespace>
     <AssemblyName>FormulaCS.Common</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExcelRangeExpander, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ExcelRangeExpander.1.0.1\lib\net46\ExcelRangeExpander.dll</HintPath>
+      <HintPath>..\..\packages\ExcelRangeExpander.1.0.2\lib\net46\ExcelRangeExpander.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
