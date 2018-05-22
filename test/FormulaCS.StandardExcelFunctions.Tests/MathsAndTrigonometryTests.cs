@@ -127,5 +127,14 @@ namespace FormulaCS.StandardExcelFunctions.Tests
             Assert.Equal(1d, Eval("=SUM(1)"));
             Assert.Throws<ArgumentException>(() => Eval("=SUM()"));
         }
+
+        [Theory]
+        [InlineData("=WEIGHTED(3, 5)", "15")]
+        [InlineData("=WEIGHTED(8, 3)", "24")]
+        public void ShouldBeAbleToApplyWeighting(string formula, string expected)
+        {
+            // assert
+            Assert.Equal(Convert.ToDouble(expected), Eval(formula));
+        }
     }
 }

@@ -46,7 +46,6 @@ namespace FormulaCS.StandardExcelFunctions.Tests
         public void EvaluatesRoundFunction()
         {
             Assert.Equal(1.2d, Eval("=ROUND(1.20,2)"));
-            Assert.Throws<ArgumentException>(() => Eval("=ROUND(1.20)"));
             Assert.Throws<ArgumentException>(() => Eval("=ROUND()"));
         }
 
