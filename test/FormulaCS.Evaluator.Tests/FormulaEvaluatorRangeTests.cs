@@ -137,7 +137,7 @@ namespace FormulaCS.Evaluator.Tests
         [InlineData("=RANGE([ID5],[ID7])", "5")]
         [InlineData("=RANGE([ID6],[ID7])", "3")]
 
-        [InlineData("=ROUND([ID6]/[ID7])", "0.6")]
+        [InlineData("=ROUND([ID6]/[ID7])", "1")]
         [InlineData("=ROUND([ID6]/[ID7], 1)", "0.6")]
         [InlineData("=ROUND([ID6]/[ID7], 2)", "0.62")]
         [InlineData("=ROUND([ID6]/[ID7], 3)", "0.625")]

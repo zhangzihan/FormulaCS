@@ -373,7 +373,7 @@ namespace FormulaCS.StandardExcelFunctions
             }
             else
             {
-                arg2 = 1;
+                arg2 = 0;
             }
 
             var val1 = Conversion.ToDoubleOrErrorValue(arg1);
