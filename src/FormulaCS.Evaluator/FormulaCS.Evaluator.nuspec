@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>FormulaCS.Evaluator</id>
+    <version>1.0.0</version>
+    <authors>radu.florescu steve.robertson</authors>
+    <owners>radu.florescu steve.robertson</owners>
+    <licenseUrl>https://raw.githubusercontent.com/stever/FormulaCS/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/stever/FormulaCS</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>ANTLR C# parser for Excel-like formula and example evaluator with some Excel functions implemented.</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>Copyright 2017 - 2018</copyright>
+    <tags>Formula Parser Excel</tags>
+    <dependencies>
+      <dependency id="ExcelRangeExpander" version="1.0.2" />
+    </dependencies>
+  </metadata>
+</package>

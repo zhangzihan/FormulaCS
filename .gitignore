@@ -7,3 +7,4 @@
 *.DotSettings
 bin/
 obj/
+*.nupkg
