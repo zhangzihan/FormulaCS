@@ -11,6 +11,13 @@ namespace FormulaCS.Evaluator
     {
         public readonly Dictionary<string, FunctionDelegate> Functions = new Dictionary<string, FunctionDelegate>(StringComparer.OrdinalIgnoreCase);
 
+        public Dictionary<string, object> Variables { get; set; }
+
+        public FormulaEvaluator()
+        {
+            Variables = new Dictionary<string, object>();
+        }
+
         public void AddStandardFunctions()
         {
             AddFunctions(DateAndTime.FunctionDelegates);
@@ -36,10 +43,25 @@ namespace FormulaCS.Evaluator
                 return 0;
             }
 
+            var parsedFormula = new VariableParser(formula, Variables);
+            formula = parsedFormula.Parse();
+
             var inputStream = new AntlrInputStream(formula);
             var lexer = new FormulaLexer(inputStream);
             var tokens = new CommonTokenStream(lexer);
             var parser = new FormulaParser(tokens);
+
+            //foreach (var variable in parsedFormula.Variables)
+            //{
+            //    if (Variables.ContainsKey(variable.Key))
+            //    {
+            //        Variables[variable.Key] = variable.Value;
+            //    }
+            //    else
+            //    {
+            //        Variables.Add(variable.Key, variable.Value);
+            //    }
+            //}
 
             var errorListener = new FormulaErrorListener();
             parser.RemoveErrorListeners();
