@@ -1,5 +1,4 @@
-﻿using System;
-using ExcelRangeExpander;
+﻿using ExcelRangeExpander;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -43,7 +42,7 @@ namespace FormulaCS.Common
             {
                 var variable = match.Value.Replace("[", string.Empty).Replace("]", string.Empty);
 
-                var expandedRange = excelRangeExpander.Expand(variable).Split(new string[] { "," }, StringSplitOptions.None).Select(x => string.Format("[{0}]", x));
+                var expandedRange = excelRangeExpander.ExpandList(variable).Select(x => string.Format("[{0}]", x)).ToList();
 
                 formula = formula.Replace(match.Value, string.Join(",", expandedRange));
             }

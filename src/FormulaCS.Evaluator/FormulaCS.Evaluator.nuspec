@@ -13,7 +13,7 @@
     <copyright>Copyright 2017 - 2018</copyright>
     <tags>Formula Parser Excel</tags>
     <dependencies>
-      <dependency id="ExcelRangeExpander" version="1.0.2" />
+      <dependency id="ExcelRangeExpander" version="1.0.3" />
     </dependencies>
   </metadata>
 </package>
