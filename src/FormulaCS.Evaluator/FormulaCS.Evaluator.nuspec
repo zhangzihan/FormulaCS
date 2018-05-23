@@ -2,18 +2,18 @@
 <package >
   <metadata>
     <id>FormulaCS.Evaluator</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <authors>radu.florescu steve.robertson</authors>
     <owners>radu.florescu steve.robertson</owners>
     <licenseUrl>https://raw.githubusercontent.com/stever/FormulaCS/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/stever/FormulaCS</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>ANTLR C# parser for Excel-like formula and example evaluator with some Excel functions implemented.</description>
-    <releaseNotes>Initial release</releaseNotes>
+    <releaseNotes>1.0.1 - Updated ExcelRangeExpander package and updated code for performance issues.</releaseNotes>
     <copyright>Copyright 2017 - 2018</copyright>
     <tags>Formula Parser Excel</tags>
     <dependencies>
-      <dependency id="ExcelRangeExpander" version="1.0.2" />
+      <dependency id="ExcelRangeExpander" version="1.0.3" />
     </dependencies>
   </metadata>
 </package>
