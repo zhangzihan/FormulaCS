@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>FormulaCS.Evaluator</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <authors>radu.florescu steve.robertson</authors>
     <owners>radu.florescu steve.robertson</owners>
     <licenseUrl>https://raw.githubusercontent.com/stever/FormulaCS/master/LICENSE</licenseUrl>
