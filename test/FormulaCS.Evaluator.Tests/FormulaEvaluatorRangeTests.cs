@@ -99,26 +99,26 @@ namespace FormulaCS.Evaluator.Tests
             Assert.Equal(Math.Round(Convert.ToDouble(expected), 4), Math.Round((double)_calculationEngine.Evaluate(formula), 4));
         }
 
-        [Theory(Skip = "We need to update ExcelRangeExpander")]
+        [Theory]
         [InlineData("=SUM([ID5:],[ID7])", "24")]
         [InlineData("=SUM([ID6:],[ID7],[ID5])", "24")]
         [InlineData("=SUM([ID7:],[ID5])", "11")]
 
-        [InlineData("=AVERAGE([ID5:],[ID7])", "12")]
-        [InlineData("=AVERAGE([ID6:],[ID5])", "8")]
+        [InlineData("=AVERAGE([ID5:],[ID7])", "6")]
+        [InlineData("=AVERAGE([ID6:],[ID5])", "5.33")]
         [InlineData("=AVERAGE([ID7:],[ID6])", "6.5")]
 
-        [InlineData("=MIN([ID5:],[ID7])", "8")]
+        [InlineData("=MIN([ID5:],[ID7])", "3")]
         [InlineData("=MIN([ID6:],[ID5])", "3")]
         [InlineData("=MIN([ID7:],[ID6])", "5")]
 
-        [InlineData("=MAX([ID5:],[ID7])", "16")]
-        [InlineData("=MAX([ID6:],[ID5])", "13")]
+        [InlineData("=MAX([ID5:],[ID7])", "8")]
+        [InlineData("=MAX([ID6:],[ID5])", "8")]
         [InlineData("=MAX([ID7:],[ID6])", "8")]
         public void ShouldTakeValuesFromAnAllocationFromAStartingPoint(string formula, string expected)
         {
             _calculationEngine.Variables = _values;
-            Assert.Equal(Convert.ToDouble(expected), _calculationEngine.Evaluate(formula));
+            Assert.Equal(Math.Round(Convert.ToDouble(expected), 2), Math.Round((double)_calculationEngine.Evaluate(formula), 2));
         }
 
         [Theory]

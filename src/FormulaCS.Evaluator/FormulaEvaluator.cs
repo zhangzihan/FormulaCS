@@ -51,18 +51,6 @@ namespace FormulaCS.Evaluator
             var tokens = new CommonTokenStream(lexer);
             var parser = new FormulaParser(tokens);
 
-            //foreach (var variable in parsedFormula.Variables)
-            //{
-            //    if (Variables.ContainsKey(variable.Key))
-            //    {
-            //        Variables[variable.Key] = variable.Value;
-            //    }
-            //    else
-            //    {
-            //        Variables.Add(variable.Key, variable.Value);
-            //    }
-            //}
-
             var errorListener = new FormulaErrorListener();
             parser.RemoveErrorListeners();
             parser.AddErrorListener(errorListener);

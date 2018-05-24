@@ -12,19 +12,6 @@ namespace FormulaCS.Common.Tests
         };
 
         [Theory]
-        [InlineData("=SUM([ID5])", 1)]
-        [InlineData("=SUM([ID5], [ID6])", 2)]
-        [InlineData("=SUM([ID5], [ID6], 3)", 2)]
-        public void should_return_expected_number_of_tokens(string formula, int expectedFormulaPlaceHolder)
-        {
-            var variableParser = new VariableParser(formula, values);
-
-            var result = variableParser.Parse();
-
-            Assert.Equal(variableParser.Variables.Count, expectedFormulaPlaceHolder);
-        }
-
-        [Theory]
         [InlineData("=SUM([ID5])", "=SUM(1)")]
         [InlineData("=SUM([ID5], [ID6])", "=SUM(1, 2)")]
         [InlineData("=SUM([ID5], [ID6], 3)", "=SUM(1, 2, 3)")]
