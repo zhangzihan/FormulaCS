@@ -9,7 +9,6 @@ namespace FormulaCS.Common
     public class VariableParser
     {
         private string formula;
-        private readonly Dictionary<string, object> _values;
 
         private const string VariableFinderRegex = @"\[(\w)*\]";
         private const string RangeFinderRegex = @"\[(\w)*((:)(\w)*)\]";
@@ -18,11 +17,10 @@ namespace FormulaCS.Common
 
         private IRangeExpander excelRangeExpander;
 
-        public VariableParser(string formula, Dictionary<string, object> Values)
+        public VariableParser(string formula, Dictionary<string, object> Variables)
         {
             this.formula = formula;
-            _values = Values;
-            Variables = new Dictionary<string, object>();
+            this.Variables = Variables;
             excelRangeExpander = new RangeExpander();
         }
 
@@ -42,9 +40,10 @@ namespace FormulaCS.Common
             {
                 var variable = match.Value.Replace("[", string.Empty).Replace("]", string.Empty);
 
-                var expandedRange = excelRangeExpander.ExpandList(variable).Select(x => string.Format("[{0}]", x)).ToList();
+                var expandedRange = excelRangeExpander.ExpandList(variable).Select(x => string.Format("{0}", x)).ToList();
+                var valuesWithValue = expandedRange.Where(x => Variables.ContainsKey(x)).Select(x => string.Format("{0}", Variables[x])).ToList();
 
-                formula = formula.Replace(match.Value, string.Join(",", expandedRange));
+                formula = formula.Replace(match.Value, string.Join(",", valuesWithValue));
             }
         }
 
@@ -60,13 +59,6 @@ namespace FormulaCS.Common
                 {
                     Variables.Add(variable, null);
                 }
-
-                if (!_values.ContainsKey(variable))
-                {
-                    _values.Add(variable, null);
-                }
-
-                Variables[variable] = _values[variable];
 
                 formula = formula.Replace(match.Value, Variables[variable]?.ToString());
             }
