@@ -1,19 +1,16 @@
 ﻿using System;
 using FormulaCS.Common;
 
-namespace FormulaCS.StandardFunctions
+namespace FormulaCS.StandardExtraFunctions
 {
-    public class Power : IFunction
+    public class Weighted : IFunction
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {
-            // Syntax: POWER(number, power)
-            // https://support.office.com/en-gb/article/POWER-function-d3f2908b-56f4-4c3f-895a-07fb519c362a
-
-            if (args.Parameters.Length != 2)
+            if (args.Parameters.Length != 1 && args.Parameters.Length != 2)
             {
                 throw new ArgumentException(
-                    $"POWER function takes 2 arguments, got {args.Parameters.Length}",
+                    $"WEIGHTED function takes 1 or 2 arguments, got {args.Parameters.Length}",
                     nameof(args));
             }
 
@@ -23,12 +20,20 @@ namespace FormulaCS.StandardFunctions
                 args.Result = arg1;
                 return;
             }
+            var arg2 = new object();
 
-            var arg2 = args.Parameters[1].Evaluate();
-            if (arg2 is ErrorValue)
+            if (args.Parameters.Length == 2)
             {
-                args.Result = arg2;
-                return;
+                arg2 = args.Parameters[1].Evaluate();
+                if (arg2 is ErrorValue)
+                {
+                    args.Result = arg2;
+                    return;
+                }
+            }
+            else
+            {
+                arg2 = 1;
             }
 
             var val1 = Conversion.ToDoubleOrErrorValue(arg1);
@@ -45,7 +50,7 @@ namespace FormulaCS.StandardFunctions
                 return;
             }
 
-            args.Result = Math.Pow((double)val1, (double)val2);
+            args.Result = (double)val1 * (double)val2;
         }        
     }
 }

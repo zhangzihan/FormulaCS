@@ -7,9 +7,9 @@ namespace FormulaCS.Evaluator
 {
     public class EvaluationVisitor : FormulaBaseVisitor<object>
     {
-        private readonly Dictionary<string, FunctionDelegate> functions;
+        private readonly Dictionary<string, Function> functions;
 
-        public EvaluationVisitor(Dictionary<string, FunctionDelegate> functions)
+        public EvaluationVisitor(Dictionary<string, Function> functions)
         {
             this.functions = functions;
         }
@@ -118,7 +118,7 @@ namespace FormulaCS.Evaluator
                 args.Parameters[i] = new Expression(expr[i], this);
             }
 
-            function(args, null);
+            function.Delegate(args, null);
             return args.HasResult ? args.Result : null;
         }
 

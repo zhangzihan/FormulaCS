@@ -12,14 +12,14 @@ namespace FormulaCS.Evaluator.Tests
 
         public FormulaEvaluatorRangeTests()
         {
-            setup();
+            Setup();
         }
 
-        public void setup()
+        private void Setup()
         {
             _calculationEngine = new FormulaEvaluator();
             _calculationEngine.AddStandardFunctions();
-            _calculationEngine.Functions.Add("AddThem", AddThemFunction);
+            _calculationEngine.AddFunction("AddThem", AddThemFunction);
 
             _values = new Dictionary<string, object>
             {
@@ -143,7 +143,7 @@ namespace FormulaCS.Evaluator.Tests
         [InlineData("=ROUND([ID6]/[ID7], 3)", "0.625")]
         public void ShouldBeAbleToPerformAllOtherRelevantFunctions(string formula, string expected)
         {
-            setup();
+            Setup();
             _calculationEngine.Variables = _values;
             Assert.Equal(Convert.ToDouble(expected), (double)_calculationEngine.Evaluate(formula));
         }
@@ -152,7 +152,7 @@ namespace FormulaCS.Evaluator.Tests
         [InlineData("=STDEV([ID5], [ID5], [ID6], [ID6])", "1.15470053837925")]
         public void ShouldBeAbleToPerformStdevFunction(string formula, string expected)
         {
-            setup();
+            Setup();
             _calculationEngine.Variables = _values;
             Assert.Equal(Math.Round(Convert.ToDouble(expected), 4), Math.Round((double)_calculationEngine.Evaluate(formula), 4));
         }

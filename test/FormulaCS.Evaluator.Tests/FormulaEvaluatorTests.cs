@@ -9,7 +9,7 @@ namespace FormulaCS.Evaluator.Tests
 
         public FormulaEvaluatorTests()
         {
-            evaluator.Functions.Add("AddThem", AddThemFunction);
+            evaluator.AddFunction("AddThem", AddThemFunction);
         }
 
         private static void AddThemFunction(IFunctionArgs args, IExcelCaller caller)

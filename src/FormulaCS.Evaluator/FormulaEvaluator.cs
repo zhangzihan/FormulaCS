@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using Antlr4.Runtime;
 using FormulaCS.Common;
 using FormulaCS.Parser;
-using FormulaCS.StandardExcelFunctions;
+using FormulaCS.StandardExtraFunctions;
+using FormulaCS.StandardFunctions.Libraries;
+using Range = FormulaCS.StandardExtraFunctions.Range;
 
 namespace FormulaCS.Evaluator
 {
     public class FormulaEvaluator
     {
-        public readonly Dictionary<string, FunctionDelegate> Functions = new Dictionary<string, FunctionDelegate>(StringComparer.OrdinalIgnoreCase);
+        public readonly Dictionary<string, Function> Functions = new Dictionary<string, Function>(StringComparer.OrdinalIgnoreCase);
 
         public Dictionary<string, object> Variables { get; set; }
 
@@ -20,15 +22,19 @@ namespace FormulaCS.Evaluator
 
         public void AddStandardFunctions()
         {
-            AddFunctions(DateAndTime.FunctionDelegates);
-            AddFunctions(Logical.FunctionDelegates);
-            AddFunctions(LookupAndReference.FunctionDelegates);
-            AddFunctions(MathAndTrigonometry.FunctionDelegates);
-            AddFunctions(Statistical.FunctionDelegates);
-            AddFunctions(Text.FunctionDelegates);
+            AddFunctions(Logical.Functions);
+            AddFunctions(MathAndTrigonometry.Functions);
+            AddFunctions(Statistical.Functions);
+            AddFunction("RANGE", new Range().Function);
+            AddFunction("WEIGHTED", new Weighted().Function);
         }
 
-        public void AddFunctions(Dictionary<string, FunctionDelegate> delegates)
+        public void AddFunction(string name, FunctionDelegate function, bool isThreadSafe = true)
+        {
+            Functions.Add(name, new Function {Delegate = function, IsThreadSafe = isThreadSafe});
+        }
+
+        public void AddFunctions(Dictionary<string, Function> delegates)
         {
             foreach (var f in delegates)
             {
