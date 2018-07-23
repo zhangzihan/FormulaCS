@@ -65,6 +65,10 @@
       <Project>{219b69eb-2703-4695-aba7-53f30ce0fca7}</Project>
       <Name>FormulaCS.StandardExcelFunctions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FormulaCS.StandardFunctions\FormulaCS.StandardFunctions.csproj">
+      <Project>{8d54a564-6590-4e68-9aa4-ccd99a3f7f88}</Project>
+      <Name>FormulaCS.StandardFunctions</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="FormulaCS.Evaluator.nuspec" />
