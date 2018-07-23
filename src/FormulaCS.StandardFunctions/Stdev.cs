@@ -5,7 +5,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardFunctions
 {
-    public class Stdev : IFunction
+    public class Stdev
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {

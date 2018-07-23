@@ -5,7 +5,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardFunctions
 {
-    public class Max : IFunction
+    public class Max
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {

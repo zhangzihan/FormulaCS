@@ -3,7 +3,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardExtraFunctions
 {
-    public class Range : IFunction
+    public class Range
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {

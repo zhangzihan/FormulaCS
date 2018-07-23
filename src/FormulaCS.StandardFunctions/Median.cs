@@ -4,7 +4,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardFunctions
 {
-    public class Median : IFunction
+    public class Median
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {

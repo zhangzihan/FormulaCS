@@ -3,7 +3,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardFunctions
 {
-    public class Sqrt : IFunction
+    public class Sqrt
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {

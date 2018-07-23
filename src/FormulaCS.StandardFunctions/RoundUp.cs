@@ -3,7 +3,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardFunctions
 {
-    public class RoundUp : IFunction
+    public class RoundUp
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {

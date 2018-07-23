@@ -3,7 +3,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardFunctions
 {
-    public class Radians : IFunction
+    public class Radians
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {

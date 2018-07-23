@@ -3,7 +3,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardFunctions
 {
-    public class Power : IFunction
+    public class Power
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {

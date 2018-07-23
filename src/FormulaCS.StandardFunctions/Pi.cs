@@ -3,7 +3,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardFunctions
 {
-    public class Pi : IFunction
+    public class Pi
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {

@@ -5,7 +5,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardFunctions
 {
-    public class Sum : IFunction
+    public class Sum
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {

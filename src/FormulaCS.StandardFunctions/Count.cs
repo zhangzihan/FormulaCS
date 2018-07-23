@@ -4,7 +4,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardFunctions
 {
-    public class Count : IFunction
+    public class Count
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {

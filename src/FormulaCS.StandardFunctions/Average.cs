@@ -5,7 +5,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardFunctions
 {
-    public class Average : IFunction
+    public class Average
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {

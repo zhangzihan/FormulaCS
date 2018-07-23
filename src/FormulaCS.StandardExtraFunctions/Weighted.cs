@@ -3,7 +3,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardExtraFunctions
 {
-    public class Weighted : IFunction
+    public class Weighted
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {

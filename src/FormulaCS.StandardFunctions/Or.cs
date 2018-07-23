@@ -2,7 +2,7 @@
 
 namespace FormulaCS.StandardFunctions
 {
-    public class Or : IFunction
+    public class Or
     {
         public void Function(IFunctionArgs args, IExcelCaller caller)
         {
