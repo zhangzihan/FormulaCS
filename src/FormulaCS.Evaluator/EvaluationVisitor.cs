@@ -7,11 +7,11 @@ namespace FormulaCS.Evaluator
 {
     public class EvaluationVisitor : FormulaBaseVisitor<object>
     {
-        private readonly Dictionary<string, Function> functions;
+        private readonly Dictionary<string, Function> _functions;
 
         public EvaluationVisitor(Dictionary<string, Function> functions)
         {
-            this.functions = functions;
+            _functions = functions;
         }
 
         public override object VisitMain(FormulaParser.MainContext context)
@@ -104,12 +104,12 @@ namespace FormulaCS.Evaluator
         {
             var name = context.name.Text;
 
-            if (!functions.ContainsKey(name))
+            if (!_functions.ContainsKey(name))
             {
                 throw new InvalidOperationException();
             }
 
-            var function = functions[name];
+            var function = _functions[name];
             var args = new FunctionArgs();
             var expr = context.expr();
             args.Parameters = new IExpression[expr.Length];

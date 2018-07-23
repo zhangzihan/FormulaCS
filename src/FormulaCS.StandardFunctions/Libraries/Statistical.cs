@@ -4,7 +4,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardFunctions.Libraries
 {
-    public class Statistical
+    public static class Statistical
     {
         public static Dictionary<string, Function> Functions { get; }
 

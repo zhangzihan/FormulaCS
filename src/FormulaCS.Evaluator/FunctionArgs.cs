@@ -4,7 +4,7 @@ namespace FormulaCS.Evaluator
 {
     public class FunctionArgs : IFunctionArgs
     {
-        private object result;
+        private object _result;
 
         public IExpression[] Parameters { get; set; } = new IExpression[0];
 
@@ -12,10 +12,10 @@ namespace FormulaCS.Evaluator
 
         public object Result
         {
-            get { return result; } 
+            get => _result;
             set
             {
-                result = value;
+                _result = value;
                 HasResult = true;
             }
         }

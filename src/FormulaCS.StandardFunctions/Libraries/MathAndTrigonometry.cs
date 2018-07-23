@@ -4,7 +4,7 @@ using FormulaCS.Common;
 
 namespace FormulaCS.StandardFunctions.Libraries
 {
-    public class MathAndTrigonometry
+    public static class MathAndTrigonometry
     {
         public static Dictionary<string, Function> Functions { get; }
 

@@ -31,7 +31,7 @@ namespace FormulaCS.Common
         private const string HashNum = "#NUM!";
         private const string HashNA = "#N/A";
 
-        private readonly ErrorType errorType;
+        private readonly ErrorType _errorType;
 
         public ErrorValue(string token)
             : this(GetErrorType(token))
@@ -39,7 +39,7 @@ namespace FormulaCS.Common
 
         private ErrorValue(ErrorType errorType)
         {
-            this.errorType = errorType;
+            _errorType = errorType;
         }
 
         private static ErrorType GetErrorType(string token)
@@ -76,7 +76,7 @@ namespace FormulaCS.Common
 
         public override string ToString()
         {
-            switch (errorType)
+            switch (_errorType)
             {
                 case ErrorType.Null: return HashNull;
                 case ErrorType.Div0: return HashDiv0;
@@ -92,7 +92,7 @@ namespace FormulaCS.Common
         public int CompareTo(ErrorValue other)
         {
             if (other == null) return -1;
-            return errorType.CompareTo(other.errorType);
+            return _errorType.CompareTo(other._errorType);
         }
 
         public int CompareTo(object obj)

@@ -5,18 +5,18 @@ namespace FormulaCS.Evaluator
 {
     public class Expression : IExpression
     {
-        private readonly FormulaParser.ExprContext context;
-        private readonly EvaluationVisitor visitor;
+        private readonly FormulaParser.ExprContext _context;
+        private readonly EvaluationVisitor _visitor;
 
         public Expression(FormulaParser.ExprContext context, EvaluationVisitor visitor)
         {
-            this.context = context;
-            this.visitor = visitor;
+            _context = context;
+            _visitor = visitor;
         }
 
         public object Evaluate()
         {
-            return context.Accept(visitor);
+            return _context.Accept(_visitor);
         }
     }
 }

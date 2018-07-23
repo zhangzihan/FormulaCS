@@ -49,7 +49,6 @@
     <Compile Include="FormulaEvaluator.cs" />
     <Compile Include="FormulaException.cs" />
     <Compile Include="FunctionArgs.cs" />
-    <Compile Include="Functions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
