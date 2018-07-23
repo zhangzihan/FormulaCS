@@ -1,15 +1,17 @@
-﻿using FormulaCS.Common;
+﻿using System;
+using FormulaCS.Common;
 using Xunit;
 
 namespace FormulaCS.Evaluator.Tests
 {
     public class FormulaEvaluatorTests
     {
-        private readonly FormulaEvaluator evaluator = new FormulaEvaluator();
+        private readonly FormulaEvaluator _evaluator = new FormulaEvaluator();
 
         public FormulaEvaluatorTests()
         {
-            evaluator.AddFunction("AddThem", AddThemFunction);
+            _evaluator.AddStandardFunctions();
+            _evaluator.AddFunction("AddThem", AddThemFunction);
         }
 
         private static void AddThemFunction(IFunctionArgs args, IExcelCaller caller)
@@ -33,7 +35,7 @@ namespace FormulaCS.Evaluator.Tests
 
         private object Eval(string formula)
         {
-            return evaluator.Evaluate(formula);
+            return _evaluator.Evaluate(formula);
         }
 
         [Fact]
@@ -158,6 +160,12 @@ namespace FormulaCS.Evaluator.Tests
         public void EvaluatesError()
         {
             Assert.Equal(ErrorValue.Num, Eval("=#NUM!"));
+        }
+ 
+        [Fact]
+        public void EvaluatesCustomFunction1()
+        {
+            Assert.Equal(7d, Math.Round(double.Parse(Eval("=(2*SUM(2,4)+AVERAGE(1,2,3))/2").ToString()), 2));
         }
     }
 }

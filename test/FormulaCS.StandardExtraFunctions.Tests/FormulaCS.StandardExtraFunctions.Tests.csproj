@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A17AF943-4C86-4912-B9DF-6A14DE2B0F05}</ProjectGuid>
+    <ProjectGuid>{C094993D-DC94-4A92-B77C-65EF36F2E89F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FormulaCS.StandardFunctions.Tests</RootNamespace>
-    <AssemblyName>FormulaCS.StandardFunctions.Tests</AssemblyName>
+    <RootNamespace>FormulaCS.StandardExtraFunctions.Tests</RootNamespace>
+    <AssemblyName>FormulaCS.StandardExtraFunctions.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -55,44 +55,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functions\And.cs" />
-    <Compile Include="Functions\Average.cs" />
-    <Compile Include="Functions\Count.cs" />
-    <Compile Include="Functions\If.cs" />
-    <Compile Include="Functions\IfError.cs" />
-    <Compile Include="Functions\Ln.cs" />
-    <Compile Include="Functions\Log.cs" />
-    <Compile Include="Functions\Max.cs" />
-    <Compile Include="Functions\Median.cs" />
-    <Compile Include="Functions\Min.cs" />
-    <Compile Include="Functions\Or.cs" />
-    <Compile Include="Functions\Pi.cs" />
-    <Compile Include="Functions\Power.cs" />
-    <Compile Include="Functions\Radians.cs" />
-    <Compile Include="Functions\Round.cs" />
-    <Compile Include="Functions\RoundDown.cs" />
-    <Compile Include="Functions\RoundUp.cs" />
-    <Compile Include="Functions\Sqrt.cs" />
-    <Compile Include="Functions\Stdev.cs" />
-    <Compile Include="Functions\Sum.cs" />
+    <Compile Include="Functions\Range.cs" />
+    <Compile Include="Functions\Weighted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\FormulaCS.Evaluator\FormulaCS.Evaluator.csproj">
+      <Project>{5043c9c4-9116-4c9b-8f97-e1cc7ae65278}</Project>
+      <Name>FormulaCS.Evaluator</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\packages\xunit.analyzers.0.7.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\FormulaCS.Common\FormulaCS.Common.csproj">
-      <Project>{35f702aa-0047-4554-8fe8-15ddcc155c83}</Project>
-      <Name>FormulaCS.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\FormulaCS.Evaluator\FormulaCS.Evaluator.csproj">
-      <Project>{5043c9c4-9116-4c9b-8f97-e1cc7ae65278}</Project>
-      <Name>FormulaCS.Evaluator</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
