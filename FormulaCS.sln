@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS.Common", "src\FormulaCS.Common\FormulaCS.Common.csproj", "{35F702AA-0047-4554-8FE8-15DDCC155C83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS.Common.Tests", "test\FormulaCS.Common.Tests\FormulaCS.Common.Tests.csproj", "{EA55A589-C840-467A-8D93-01AA8CBB83E3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{46FFCE82-3C69-4AAA-9BDE-4D0645C06D27}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C0BC5A98-A6F0-4B62-927C-867C778B4913}"
@@ -15,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS.Parser", "src\For
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS.Evaluator", "src\FormulaCS.Evaluator\FormulaCS.Evaluator.csproj", "{5043C9C4-9116-4C9B-8F97-E1CC7AE65278}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS.Evaluator.Tests", "test\FormulaCS.Evaluator.Tests\FormulaCS.Evaluator.Tests.csproj", "{BCDA6468-3B10-4ADA-9275-9AD713EA7B60}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS.StandardFunctions", "src\FormulaCS.StandardFunctions\FormulaCS.StandardFunctions.csproj", "{8D54A564-6590-4E68-9AA4-CCD99A3F7F88}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS.StandardFunctions.Tests", "test\FormulaCS.StandardFunctions.Tests\FormulaCS.StandardFunctions.Tests.csproj", "{A17AF943-4C86-4912-B9DF-6A14DE2B0F05}"
@@ -24,6 +20,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS.StandardExtraFunctions", "src\FormulaCS.StandardExtraFunctions\FormulaCS.StandardExtraFunctions.csproj", "{05E9B27D-EA1B-4B71-9735-7C1643F048A4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS.StandardExtraFunctions.Tests", "test\FormulaCS.StandardExtraFunctions.Tests\FormulaCS.StandardExtraFunctions.Tests.csproj", "{C094993D-DC94-4A92-B77C-65EF36F2E89F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS.Common.Tests", "test\FormulaCS.Common.Tests\FormulaCS.Common.Tests.csproj", "{9C901719-3F79-4B87-82EA-F22E2BEDA03D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaCS.Evaluator.Tests", "test\FormulaCS.Evaluator.Tests\FormulaCS.Evaluator.Tests.csproj", "{D3AC61AF-3FBE-43B1-AE04-7166C69AD6DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,6 @@ Global
 		{35F702AA-0047-4554-8FE8-15DDCC155C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35F702AA-0047-4554-8FE8-15DDCC155C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35F702AA-0047-4554-8FE8-15DDCC155C83}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA55A589-C840-467A-8D93-01AA8CBB83E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA55A589-C840-467A-8D93-01AA8CBB83E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA55A589-C840-467A-8D93-01AA8CBB83E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA55A589-C840-467A-8D93-01AA8CBB83E3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EFD33601-260E-460C-9A8C-C67B23BACF11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EFD33601-260E-460C-9A8C-C67B23BACF11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFD33601-260E-460C-9A8C-C67B23BACF11}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,10 +43,6 @@ Global
 		{5043C9C4-9116-4C9B-8F97-E1CC7AE65278}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5043C9C4-9116-4C9B-8F97-E1CC7AE65278}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5043C9C4-9116-4C9B-8F97-E1CC7AE65278}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BCDA6468-3B10-4ADA-9275-9AD713EA7B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BCDA6468-3B10-4ADA-9275-9AD713EA7B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BCDA6468-3B10-4ADA-9275-9AD713EA7B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BCDA6468-3B10-4ADA-9275-9AD713EA7B60}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8D54A564-6590-4E68-9AA4-CCD99A3F7F88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8D54A564-6590-4E68-9AA4-CCD99A3F7F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D54A564-6590-4E68-9AA4-CCD99A3F7F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,20 +59,28 @@ Global
 		{C094993D-DC94-4A92-B77C-65EF36F2E89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C094993D-DC94-4A92-B77C-65EF36F2E89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C094993D-DC94-4A92-B77C-65EF36F2E89F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C901719-3F79-4B87-82EA-F22E2BEDA03D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C901719-3F79-4B87-82EA-F22E2BEDA03D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C901719-3F79-4B87-82EA-F22E2BEDA03D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C901719-3F79-4B87-82EA-F22E2BEDA03D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3AC61AF-3FBE-43B1-AE04-7166C69AD6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3AC61AF-3FBE-43B1-AE04-7166C69AD6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3AC61AF-3FBE-43B1-AE04-7166C69AD6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3AC61AF-3FBE-43B1-AE04-7166C69AD6DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{35F702AA-0047-4554-8FE8-15DDCC155C83} = {46FFCE82-3C69-4AAA-9BDE-4D0645C06D27}
-		{EA55A589-C840-467A-8D93-01AA8CBB83E3} = {C0BC5A98-A6F0-4B62-927C-867C778B4913}
 		{EFD33601-260E-460C-9A8C-C67B23BACF11} = {46FFCE82-3C69-4AAA-9BDE-4D0645C06D27}
 		{5043C9C4-9116-4C9B-8F97-E1CC7AE65278} = {46FFCE82-3C69-4AAA-9BDE-4D0645C06D27}
-		{BCDA6468-3B10-4ADA-9275-9AD713EA7B60} = {C0BC5A98-A6F0-4B62-927C-867C778B4913}
 		{8D54A564-6590-4E68-9AA4-CCD99A3F7F88} = {46FFCE82-3C69-4AAA-9BDE-4D0645C06D27}
 		{A17AF943-4C86-4912-B9DF-6A14DE2B0F05} = {C0BC5A98-A6F0-4B62-927C-867C778B4913}
 		{05E9B27D-EA1B-4B71-9735-7C1643F048A4} = {46FFCE82-3C69-4AAA-9BDE-4D0645C06D27}
 		{C094993D-DC94-4A92-B77C-65EF36F2E89F} = {C0BC5A98-A6F0-4B62-927C-867C778B4913}
+		{9C901719-3F79-4B87-82EA-F22E2BEDA03D} = {C0BC5A98-A6F0-4B62-927C-867C778B4913}
+		{D3AC61AF-3FBE-43B1-AE04-7166C69AD6DF} = {C0BC5A98-A6F0-4B62-927C-867C778B4913}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D3B2B2E1-449A-414B-B98D-0E5606FD8CED}
