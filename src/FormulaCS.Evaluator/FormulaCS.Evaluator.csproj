@@ -56,17 +56,9 @@
       <Project>{35f702aa-0047-4554-8fe8-15ddcc155c83}</Project>
       <Name>FormulaCS.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FormulaCS.Functions.ExtraMathAndTrigonometry\FormulaCS.Functions.ExtraMathAndTrigonometry.csproj">
-      <Project>{603c5b6c-6c0b-4c73-8802-e2de099aeb98}</Project>
-      <Name>FormulaCS.Functions.ExtraMathAndTrigonometry</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FormulaCS.Parser\FormulaCS.Parser.csproj">
       <Project>{efd33601-260e-460c-9a8c-c67b23bacf11}</Project>
       <Name>FormulaCS.Parser</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FormulaCS.StandardExcelFunctions\FormulaCS.StandardExcelFunctions.csproj">
-      <Project>{219b69eb-2703-4695-aba7-53f30ce0fca7}</Project>
-      <Name>FormulaCS.StandardExcelFunctions</Name>
     </ProjectReference>
     <ProjectReference Include="..\FormulaCS.StandardExtraFunctions\FormulaCS.StandardExtraFunctions.csproj">
       <Project>{05e9b27d-ea1b-4b71-9735-7c1643f048a4}</Project>
