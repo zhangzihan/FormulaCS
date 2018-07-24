@@ -82,9 +82,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\..\packages\xunit.analyzers.0.7.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\src\FormulaCS.Common\FormulaCS.Common.csproj">
       <Project>{35f702aa-0047-4554-8fe8-15ddcc155c83}</Project>
       <Name>FormulaCS.Common</Name>
@@ -93,6 +90,9 @@
       <Project>{5043c9c4-9116-4c9b-8f97-e1cc7ae65278}</Project>
       <Name>FormulaCS.Evaluator</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\xunit.analyzers.0.9.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
