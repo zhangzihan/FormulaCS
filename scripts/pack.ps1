@@ -1,0 +1,1 @@
+nuget pack ..\src\FormulaCS.Evaluator\FormulaCS.Evaluator.csproj -includereferencedprojects -Output ..
